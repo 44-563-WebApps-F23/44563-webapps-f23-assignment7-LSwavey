@@ -29,7 +29,11 @@ h1 {
 }
 
 #help:hover {
-    color: green;
+    color: gold;
+}
+
+#helpButton:hover{
+    color:gold;
 }
 
 .grid {
@@ -57,98 +61,185 @@ h1 {
 
 <p>Click on the locations to search for treasure, beware the traps</p>
 
-<p id="locations">Number of locations checked is zero.</p>
+<p id="locations">Number of locations checked is 0.</p>
 
-<p id="penalty">Penalty is zero.</p>
+<p id="penalty">Penalty is 0.</p>
 
-<p>Click for help.</p>
+<p id="helpButton" onclick=help()>Click for help.</p>
 
 <div id="help">Help report.</div>
 
 <div class="grid">
 
     <div class="location">
-        <img src="pic2.jpg" alt="Treasure chest">
+        <img src="pic1.jpg" alt="Treasure chest" id="image0" onclick="check(0)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Treasure chest">
+        <img src="pic1.jpg" alt="Treasure chest" id="image1" onclick="check(1)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Treasure chest">
+        <img src="pic1.jpg" alt="Treasure chest" id="image2" onclick="check(2)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Treasure chest">
+        <img src="pic1.jpg" alt="Treasure chest" id="image3" onclick="check(3)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Treasure chest">
-    </div>
-
-
-    <div class="location">
-        <img src="pic2.jpg" alt="Starting location">
-    </div>
-    <div class="location">
-        <img src="pic2.jpg" alt="Treasure chest">
-    </div>
-    <div class="location">
-        <img src="pic2.jpg" alt="Trap">
-    </div>
-    <div class="location">
-        <img src="pic2.jpg" alt="Pirate Skull">
-    </div>
-    <div class="location">
-        <img src="pic2.jpg" alt="Pirate Skull">
+        <img src="pic1.jpg" alt="Treasure chest" id="image4" onclick="check(4)">
     </div>
 
+
     <div class="location">
-        <img src="pic2.jpg" alt="Starting location">
+        <img src="pic1.jpg" alt="Starting location" id="image5" onclick="check(5)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Treasure chest">
+        <img src="pic1.jpg" alt="Treasure chest" id="image6" onclick="check(6)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Trap">
+        <img src="pic1.jpg" alt="Trap" id="image7" onclick="check(7)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Pirate Skull">
+        <img src="pic1.jpg" alt="Pirate Skull" id="image8" onclick="check(8)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Pirate Skull">
+        <img src="pic1.jpg" alt="Pirate Skull" id="image9" onclick="check(9)">
     </div>
 
     <div class="location">
-        <img src="pic2.jpg" alt="Starting location">
+        <img src="pic1.jpg" alt="Starting location" id="image10" onclick="check(10)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Treasure chest">
+        <img src="pic1.jpg" alt="Treasure chest" id="image11" onclick="check(11)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Trap">
+        <img src="pic1.jpg" alt="Trap" id="image12" onclick="check(12)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Pirate Skull">
+        <img src="pic1.jpg" alt="Pirate Skull" id="image13" onclick="check(13)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Pirate Skull">
+        <img src="pic1.jpg" alt="Pirate Skull" id="image14" onclick="check(14)">
     </div>
 
     <div class="location">
-        <img src="pic2.jpg" alt="Starting location">
+        <img src="pic1.jpg" alt="Starting location" id="image15" onclick="check(15)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Treasure chest">
+        <img src="pic1.jpg" alt="Treasure chest" id="image16" onclick="check(16)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Trap">
+        <img src="pic1.jpg" alt="Trap" id="image17" onclick="check(17)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Pirate Skull">
+        <img src="pic1.jpg" alt="Pirate Skull" id="image18" onclick="check(18)">
     </div>
     <div class="location">
-        <img src="pic2.jpg" alt="Pirate Skull">
+        <img src="pic1.jpg" alt="Pirate Skull" id="image19" onclick="check(19)">
+    </div>
+
+    <div class="location">
+        <img src="pic1.jpg" alt="Starting location" id="image20" onclick="check(20)">
+    </div>
+    <div class="location">
+        <img src="pic1.jpg" alt="Treasure chest" id="image21" onclick="check(21)">
+    </div>
+    <div class="location">
+        <img src="pic1.jpg" alt="Trap" id="image22" onclick="check(22)">
+    </div>
+    <div class="location">
+        <img src="pic1.jpg" alt="Pirate Skull" id="image23" onclick="check(23)">
+    </div>
+    <div class="location">
+        <img src="pic1.jpg" alt="Pirate Skull" id="image24" onclick="check(24)">
     </div>
 </div>
 
+<script>
+
+    var ids = ["image0","image1","image2","image3","image4","image5","image6","image7","image8","image9","image10",
+    "image11","image12","image13","image14","image15","image16","image17","image18","image19","image20","image21","image22",
+    "image23","image24"]
+
+    var checkCount = 0;
+    var penalty = 0;
+    var lastCheck = 0;
+    var treasureLocation = 5;
+    var trapLocation = 18;
+    var gameOver = false;
+
+    function check(position) {
+        //If the game is Over do nothing
+        if (gameOver) {
+            return;
+        }
+
+        var imageId = ids[position];
+
+        var imageBy = document.getElementById(imageId);
+
+        //If the position aligns with treasure location show the source
+        if (position === treasureLocation) {
+            imageBy.src = "pic2.jpg";
+        } else if (position === trapLocation) {
+            imageBy.src = "pic3.jpg"
+        } else {
+            imageBy.src = "pic4.jpg"
+        }
+
+        //Add one to checkCount and penalty
+        checkCount ++;
+        penalty++;
+
+        document.getElementById("locations").textContent  = "Number of locations checked is " + checkCount + ".";
+
+        if(position == treasureLocation) {
+            gameOver = true;
+            penalty -= 3;
+        }
+
+        if(position == trapLocation) {
+            gameOver = true;
+            penalty += 4;
+        }
+
+        document.getElementById("penalty").textContent = "Penalty is " + penalty + ".";
+
+        lastCheck = position;
+    }
+
+    function help() {
+        //Calculate row and column for treasre and last
+        var treasureRow = Math.floor(treasureLocation / 5);
+        var treasureCol = (treasureLocation % 5);
+        var lastRow = Math.floor(lastCheck / 5);
+        var lastCol = lastCheck % 5;
+
+        //Calculate difference between the rows and the columns
+        var rowMin = Math.abs(treasureRow - lastRow);
+        var colMin = Math.abs(treasureCol - lastCol);
+
+        //IF else if and else for treasure location
+        let message;
+        if(rowMin <= 1 && colMin <= 1 && rowMin !== colMin) {
+            penalty += 2;
+            message = "Can smell it";
+        }
+
+        else if(rowMin + colMin === 2){
+            message = "Close Matie";
+        }
+
+        else {
+            message = "Step Faster"
+        }
+
+        penalty += 2;
+
+        document.getElementById("penalty").textContent = "Penalty is: " + penalty;
+        document.getElementById("help").textContent = message;
+
+    }
+
+</script>
 
 </body>
 </html>
