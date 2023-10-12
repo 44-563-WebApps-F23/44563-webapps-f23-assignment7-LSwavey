@@ -153,6 +153,8 @@ h1 {
     </div>
 </div>
 
+<button onclick = "resetGame()">New Game</button>
+
 <script>
 
     var ids = ["image0","image1","image2","image3","image4","image5","image6","image7","image8","image9","image10",
@@ -162,8 +164,8 @@ h1 {
     var checkCount = 0;
     var penalty = 0;
     var lastCheck = 0;
-    var treasureLocation = 5;
-    var trapLocation = 18;
+    var treasureLocation = Math.floor(Math.random() * 25);
+    var trapLocation = Math.floor(Math.random() * 25);
     var gameOver = false;
 
     function check(position) {
@@ -238,6 +240,28 @@ h1 {
         document.getElementById("help").textContent = message;
 
     }
+
+    function resetGame() {
+            // Reset game variables
+      checkCount = 0;
+      penalty = 0;
+      lastCheck = 0;
+      gameOver = false;
+
+      // Randomly select new positions for trap and treasure
+      treasureLocation = Math.floor(Math.random() * 25);
+      trapLocation = Math.floor(Math.random() * 25);
+
+      // Reset location images
+      for (var i = 0; i < ids.length; i++) {
+        var imageBy = document.getElementById(ids[i]);
+        imageBy.src = "pic1.jpg";
+      }
+
+      document.getElementById("locations").textContent = "Number of locations checked is 0.";
+      document.getElementById("penalty").textContent = "Penalty is 0.";
+    }
+
 
 </script>
 

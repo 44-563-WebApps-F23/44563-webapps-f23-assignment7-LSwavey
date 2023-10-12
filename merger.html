@@ -40,6 +40,7 @@
 		<button onclick="makeNewDiv()">Add one</button>
 		<button onclick="addFront()">Add front</button>
 		<button onclick="removeItem()">Remove</button>
+		<button onclick="swapItems()">Swap</button>
 	
 	
 </body>
@@ -83,7 +84,7 @@
 	function addFront() {
 		let element = document.createElement("div");
 		element.innerHTML = document.getElementById("newElementText").value;
-		element.style.color = "oragne";
+		element.style.color = "orange";
 		element.className = "merger";
 
 		let container = document.getElementById('target');
@@ -91,5 +92,30 @@
 
 		document.getElementById("newElementText").value = "";
 	}
+
+	function swapItems() {
+    let mergeEle = document.getElementsByClassName("merger");
+    if (mergeEle.length < 2) {
+      return; // Not enough elements to swap
+    }
+
+    let index1 = Math.floor(Math.random() * mergeEle.length);
+    let index2 = Math.floor(Math.random() * mergeEle.length);
+
+    // Ensure the indices are different
+    while (index1 === index2) {
+      index2 = Math.floor(Math.random() * mergeEle.length);
+    }
+
+    let container = document.getElementById('target');
+    let item1 = mergeEle[index1];
+    let item2 = mergeEle[index2];
+    let nextSibling1 = item1.nextSibling;
+    let nextSibling2 = item2.nextSibling;
+
+    // Swap the elements
+    container.insertBefore(item1, nextSibling2);
+    container.insertBefore(item2, nextSibling1);
+}
 </script>
 </html>	
