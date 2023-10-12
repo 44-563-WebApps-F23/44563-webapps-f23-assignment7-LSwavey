@@ -14,7 +14,7 @@
   <h2>Landon Swavey speed check </h2>
 
   <div id="timeTarget">Your time: <span id="timeDis">0</span></div>
-  <div id="countTarget">Count: <spain id="countDis">0</spain></div>
+  <div id="countTarget">Count: <span id="countDis">0</spain></div>
 
   <button id="start">Start Timer</button>
   <button id="react">React</button>
@@ -45,17 +45,23 @@
       setTimeout(function() {
         var cdId = document.getElementById("countDis");
         cdId.innerHTML = i;
-      }(8 - i ) * 1000);
+      }, (8 - i) * 1000);
     }
     setTimeout(function(){
       if(reactTime === undefined){
         var target = document.getElementById("target");
-        target.innerHTML = "Time was " + document.getElementById("timeDis").textContent + " milliseconds";
+        target.innerHTML = "Too Slow";
+      } else {
+        var endTime = Date.now();
+        var elapsedTime = endTime - reactTime;
+        document.getElementById("target").innerHTML = "Time was " + elapsedTime + " milliseconds"
       }
-    },9000)
+    }, 8000)
   }
 
   document.getElementById("start").onclick = startTimer;
+
+  document.getElementById("react").onclick = recordTime;
 
   function buttonPress1() {
     setTimeout(function(){
